@@ -4,17 +4,32 @@ import FormGroup from "components/common/FormGroup";
 import { Input } from "components/input";
 import { Label } from "components/label";
 import LayoutAuthentication from "layouts/LayoutAuthentication";
-
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+const schema = yup.object({
+  name: yup.string().required("this field is required"),
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("this field is required"),
+  password: yup
+    .string()
+    .min(8, "password must be 8 character")
+    .required("this field is required"),
+});
 const SignUpPage = () => {
   const {
     handleSubmit,
     control,
-    // formState: { isValid, isSubmitting },
-  } = useForm({});
+    formState: { isValid, isSubmitting, errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onSubmit",
+  });
+
   const handleSignUp = (values) => {
     console.log("handleSignUp ~ values", values);
   };
@@ -40,11 +55,17 @@ const SignUpPage = () => {
       <form onSubmit={handleSubmit(handleSignUp)}>
         <FormGroup>
           <Label htmlFor="name">Full Name *</Label>
-          <Input control={control} name="name" placeholder="Jhon Doe"></Input>
+          <Input
+            error={errors?.name?.message}
+            control={control}
+            name="name"
+            placeholder="Jhon Doe"
+          ></Input>
         </FormGroup>
         <FormGroup>
           <Label htmlFor="email">Email *</Label>
           <Input
+            error={errors?.email?.message}
             control={control}
             name="email"
             type="email"
@@ -54,6 +75,7 @@ const SignUpPage = () => {
         <FormGroup>
           <Label htmlFor="password">Password *</Label>
           <Input
+            error={errors?.password?.message}
             control={control}
             name="password"
             type="password"
