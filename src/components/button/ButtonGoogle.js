@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+import ErrorComponent from "components/common/ErrorComponent";
 
 const ButtonGoogle = ({
   text = "Or sign up with email",
@@ -14,4 +17,10 @@ const ButtonGoogle = ({
   );
 };
 
-export default ButtonGoogle;
+ButtonGoogle.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func,
+};
+export default withErrorBoundary(ButtonGoogle, {
+  FallbackComponent: ErrorComponent,
+});
