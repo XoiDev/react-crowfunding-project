@@ -4,11 +4,11 @@ import LayoutDashBoard from "layouts/LayoutDashBoard";
 import CampaignFeature from "modules/campaign/CampaignFeature";
 import CampaignGrid from "modules/campaign/CampaignGrid";
 import CampCategory from "modules/campaign/parts/CampCategory";
-import React from "react";
+import React, { Fragment } from "react";
 
 const CampaignPage = () => {
   return (
-    <LayoutDashBoard>
+    <Fragment>
       <div className="flex items-center justify-between px-10 py-8 mb-10 bg-white rounded-3xl">
         <div className="flex items-start gap-x-6">
           <div className="flex items-center justify-center text-white rounded-full w-14 h-14 bg-secondary bg-opacity-60">
@@ -39,7 +39,7 @@ const CampaignPage = () => {
             </a>
           </div>
         </div>
-        <Button type="button" className="text-secondary bg-secondary">
+        <Button type="button" href="/start-campaign" kind="ghost">
           Create campaign
         </Button>
       </div>
@@ -50,7 +50,26 @@ const CampaignPage = () => {
         <CampaignFeature></CampaignFeature>
         <CampaignFeature></CampaignFeature>
       </CampaignGrid>
-    </LayoutDashBoard>
+      <div className="mt-10 text-center">
+        <Button kind="ghost" className="px-8 mx-auto">
+          See more
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 6v12m6-6H6"
+            />
+          </svg>
+        </Button>
+      </div>
+    </Fragment>
   );
 };
 
