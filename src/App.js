@@ -1,3 +1,4 @@
+import CampaignPage from "pages/CampaignPage";
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DashboardPage></DashboardPage>}></Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
+        <Route path="/campaign" element={<CampaignPage></CampaignPage>}></Route>
         <Route path="/sign-in" element={<SignInPage></SignInPage>}></Route>
       </Routes>
     </Suspense>

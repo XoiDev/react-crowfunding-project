@@ -8,7 +8,8 @@ import {
   IconWithdraw,
 } from "components/icons";
 import { NavLink } from "react-router-dom";
-
+const navLinkClass =
+  "flex items-center md:w-12 md:h-12 md:justify-center md:rounded-3xl md:mb-8 gap-x-5  last:mt-auto last:shadow-sdprimary";
 const sidebarLinks = [
   {
     icon: <IconDashboard></IconDashboard>,
@@ -38,13 +39,13 @@ const sidebarLinks = [
   {
     icon: <IconLogout></IconLogout>,
     title: "Logout",
-    url: "#",
+    url: "/logout",
     onClick: () => {},
   },
   {
     icon: <IconDarkmode></IconDarkmode>,
     title: "Light/Dark",
-    url: "#",
+    url: "/Dark",
     onClick: () => {},
   },
 ];
@@ -53,7 +54,11 @@ const DashboardSidebar = () => {
     <div className="w-full md:w-[76px] rounded-lg bg-white shadow-[10px_10px_20px_rgba(218,_213,_213,_0.15)] px-[14px] py-10 flex-col flex-shrink-0 ">
       {sidebarLinks.map((link) => (
         <NavLink
-          className={`flex items-center md:w-12 md:h-12 md:justify-center md:rounded-3xl md:mb-8 gap-x-5 text-icon-color last:mt-auto last:shadow-sdprimary`}
+          className={({ isActive }) =>
+            isActive
+              ? `${navLinkClass} text-primary bg-primary bg-opacity-20`
+              : `${navLinkClass}`
+          }
           to={link.url}
           key={link.title}
         >
