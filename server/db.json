@@ -84,6 +84,21 @@
       "startDate": "2024-10-26T12:41:50.400Z",
       "endDate": "2024-10-26T12:41:50.400Z",
       "id": 6
+    },
+    {
+      "title": "test",
+      "short_description": "test",
+      "goal": "test",
+      "amount": "test",
+      "prefilled": "test",
+      "video": "test",
+      "category": "category",
+      "featured_image": "https://i.ibb.co/7xfSm28/ch-ng-ch-b1.jpg",
+      "country": "Algeria",
+      "content": "<p>test</p>",
+      "startDate": "2024-11-02T17:00:00.000Z",
+      "endDate": "2024-10-19T17:00:00.000Z",
+      "id": 7
     }
   ]
 }
